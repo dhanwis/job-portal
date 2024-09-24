@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="template-color" content="#0E0E0E">
+    <link rel="manifest" href="manifest.json" crossorigin="">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="description" content="Edit Job page">
+    <meta name="keywords" content="edit, job">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="" href="">
+    <link href="{% static 'assets/css5/style.css' %}" rel="stylesheet">
+    <title>Edit Job</title>
+</head>
+<body>
+    <div class="box-content">
+        <div class="box-heading">
+            <div class="box-title">
+                <h3 class="mb-35">Edit Job</h3>
+            </div>
+            <div class="box-breadcrumb">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><span>Edit Job</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-box">
+                    <div class="container">
+                        <div class="panel-white mb-30">
+                            <div class="box-padding bg-postjob">
+                                <form method="POST" action="{% url 'job_edit' job.id %}">
+                                    {% csrf_token %}
+                                    <div class="row mt-30">
+                                        <div class="col-lg-9">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Job title</label>
+                                                        <input class="form-control" type="text" name="title" value="{{ job.title }}" placeholder="e.g. Senior Product Designer">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Company name</label>
+                                                        <input class="form-control" type="text" name="company_name" value="{{ job.company_name }}" placeholder="e.g. Tech Corp">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Posted date</label>
+                                                        <input class="form-control" type="date" name="posted_date" value="{{ job.posted_date|date:'Y-m-d' }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job type</label>
+                                                        <select class="form-control" name="job_type">
+                                                            <option value="">Select Job Type</option>
+                                                            <option value="Full-time" {% if job.job_type == 'Full-time' %}selected{% endif %}>Full-time</option>
+                                                            <option value="Part-time" {% if job.job_type == 'Part-time' %}selected{% endif %}>Part-time</option>
+                                                            <option value="Contract" {% if job.job_type == 'Contract' %}selected{% endif %}>Contract</option>
+                                                            <option value="Internship" {% if job.job_type == 'Internship' %}selected{% endif %}>Internship</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Job description</label>
+                                                        <textarea class="form-control" name="description" rows="8">{{ job.description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Job location</label>
+                                                        <input class="form-control" type="text" name="location" value="{{ job.location }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Workplace type</label>
+                                                        <select class="form-control" name="workplace_type">
+                                                            <option value="Remote" {% if job.workplace_type == 'Remote' %}selected{% endif %}>Remote</option>
+                                                            <option value="Office" {% if job.workplace_type == 'Office' %}selected{% endif %}>Office</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-mutted mb-10">Salary</label>
+                                                        <input class="form-control" type="text" name="salary" value="{{ job.salary }}" placeholder="$2200 - $2500">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job Category</label>
+                                                        <select class="form-control" name="job_category">
+                                                            <option value="">Select Job Category</option>
+                                                            <option value="Automotive-Jobs" {% if job.job_category == 'Automotive-Jobs' %}selected{% endif %}>Automotive Jobs</option>
+                                                            <option value="HealthCare" {% if job.job_category == 'HealthCare' %}selected{% endif %}>HealthCare</option>
+                                                            <option value="Customer-Service" {% if job.job_category == 'Customer-Service' %}selected{% endif %}>Customer-Service</option>
+                                                            <option value="Project-Management" {% if job.job_category == 'Project-Management' %}selected{% endif %}>Project Management</option>
+                                                            <option value="Development" {% if job.job_category == 'Development' %}selected{% endif %}>Development</option>
+                                                            <option value="Design" {% if job.job_category == 'Design' %}selected{% endif %}>Design</option>
+                                                            <option value="Marketing" {% if job.job_category == 'Marketing' %}selected{% endif %}>Marketing</option>
+                                                            <option value="Accounting-Finance" {% if job.job_category == 'Accounting-Finance' %}selected{% endif %}>Accounting-Finance</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mt-10">
+                                                        <button class="btn btn-default" type="submit">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'assets/js2/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery-migrate-3.3.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js2/waypoints.js' %}"></script>
+    <script src="{% static 'assets/js2/magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js2/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/js2/select2.min.js' %}"></script>
+    <script src="{% static 'assets/js2/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery.circliful.js' %}"></script>
+    <script src="{% static 'assets/js2/main.js' %}"></script>
+</body>
+</html>

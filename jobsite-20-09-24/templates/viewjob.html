@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job Details</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styles for job card */
+.job-card {
+    margin: auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-card .card-body {
+    padding: 20px;
+}
+
+.job-card .card-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.job-card .card-text {
+    margin-bottom: 15px;
+}
+
+.job-card .job-description {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.job-card .card-footer {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+    </style>
+</head>
+<body>
+    <header class="container mt-5">
+        <h1 class="text-center">Job Details</h1>
+    </header>
+
+    <main class="container mt-4">
+        <div class="card job-card">
+            <div class="card-body">
+                <h2 class="card-title">{{ job.title }}</h2>
+                <p class="card-text"><strong>Salary:</strong> ${{ job.salary }}</p>
+                <p class="card-text"><strong>Workplace Type:</strong> {{ job.workplace_type }}</p>
+                <p class="card-text"><strong>Company Name:</strong> {{ job.company_name }}</p>
+                <p class="card-text"><strong>Posted Date:</strong> {{ job.posted_date }}</p>
+                <p class="card-text"><strong>Job Type:</strong> {{ job.job_type }}</p>
+                <p class="card-text"><strong>Location:</strong> {{ job.location }}</p>
+                <p class="card-text"><strong>Job Category:</strong> {{ job.job_category }}</p> <!-- Added Job Category -->
+
+                <p class="card-text"><strong>Description:</strong></p>
+                <div class="job-description">
+                    <p class="card-text">{{ job.description|safe }}</p>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to jobs
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

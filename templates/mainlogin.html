@@ -1,0 +1,169 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Login </title>
+	<link rel="stylesheet" href="{% static  'assets/css1/style.css' %}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            color: #1245a8;
+            font-weight: bold;
+        }
+        .login-link {
+            color: #1245a8;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .container {
+            margin-top: 60px; /* Adjust to account for the fixed navbar */
+        }
+        .text-wrap {
+            height: 600px;
+            border-radius: 30px;
+            background-color: #1245a8;
+            background-image: linear-gradient(lightblue, #1245a8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+        .text-wrap .btn {
+            margin: 10px;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            background: transparent;
+        }
+        .text-wrap .btn:hover {
+            background-color: #ffffff;
+            color: #1245a8;
+        }
+        @media (max-width: 768px) {
+            .text-wrap {
+                padding: 20px;
+                height: auto;
+            }
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+	<nav class="navbar">
+        <span class="navbar-brand">Job Website</span>
+        <a href="{% url 'user_login' %}" class="login-link"><span style="color: black;">Already Registered?</span> Login <span style="color: black;">here</span></a>
+    </nav>
+	<section class="ftco-section" style="padding: 3em 0;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section"></h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<!-- <div class="col-md-12 col-lg-10"> -->
+					<!-- <div class="wrap d-md-flex"> -->
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last"
+							style=" height: 600px; border-radius: 30px;background-color: #1245a8; /* For browsers that do not support gradients */
+  background-image: linear-gradient(lightblue, #1245a8);" >
+							<div class="text w-100">
+								
+								<div class="text w-100">
+									<h2>Create your profile</h2>
+									<h6>Search & apply to jobs from India's No.1 Job Site</h6>
+									{% comment %} <p >Don't have an account?</p> {% endcomment %}
+									<a href="#" class="btn btn-white btn-outline-white" id="registerBtn">
+										<i class="fa fa-sign-in" style="font-size:20px"></i>  LogIn</a>
+                                    <a href="#"  class="btn btn-white btn-outline-white"  id="registerBtn-1">
+										<i class="icon fas fa-user-plus" ></i>  Register?</a>
+
+
+
+								</div>
+								<div id="registerOptions" style="display: none;
+								margin-top: 20px; border-radius: 30px; width: 200px; ">
+									<a href="{% url 'user_login' %}" class="btn btn "><i class='fas fa-briefcase' style='font-size:20px'></i>
+										User </a>
+									<a href="{% url 'login_company' %}" class="btn btn"><i class='far fa-building' style='font-size:20px'></i>
+										Company </a>
+								</div>
+                                <div id="registerOptions-1" style="display: none;
+								margin-top: 20px; border-radius: 30px;width: 200px; float: right; ">
+									<a href="{% url 'user_register' %}" class="btn btn "><i class='fas fa-briefcase' style='font-size:20px'></i>  User </a>
+									<a href="{% url 'register_company' %}" class="btn btn"><i class='far fa-building' style='font-size:20px'></i>  Company </a>
+								</div>
+							</div>
+						</div>
+						
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
+		</div>
+	</section>
+	
+
+	
+	<script>
+		document.getElementById("registerBtn").addEventListener("click", function() {
+			var registerOptions = document.getElementById("registerOptions");
+			var registerOptions1 = document.getElementById("registerOptions-1");
+	
+			if (registerOptions.style.display === "none") {
+				registerOptions.style.display = "block";
+				registerOptions1.style.display = "none"; // Hide the other set of buttons
+			} else {
+				registerOptions.style.display = "none";
+			}
+		});
+	</script>
+	
+	<script>
+		document.getElementById("registerBtn-1").addEventListener("click", function() {
+			var registerOptions = document.getElementById("registerOptions");
+			var registerOptions1 = document.getElementById("registerOptions-1");
+	
+			if (registerOptions1.style.display === "none") {
+				registerOptions1.style.display = "block";
+				registerOptions.style.display = "none"; // Hide the other set of buttons
+			} else {
+				registerOptions1.style.display = "none";
+			}
+		});
+	</script>
+	
+
+	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+	<script src="{% static  'assets/js/popper.js' %}"></script>
+	<script src="{% static  'aassets/js/bootstrap.min.js' %}"></script>
+	<script src="{% static  'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

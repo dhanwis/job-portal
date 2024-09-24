@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Employee</title>
+    <link href="{% static 'assets/css5/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .employee-details {
+            margin-bottom: 15px;
+        }
+        .employee-details label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .employee-details p {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .employee-details .strong {
+            font-weight: bold;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Employee</h1>
+        <div class="employee-details">
+            <label><strong>Username:</strong></label>
+            <p>{{ employee.user.username }}</p>
+
+            <label><strong>Gender:</strong></label>
+            <p>{{ employee.gender }}</p>
+
+            <label><strong>Date of Birth:</strong></label>
+            <p>{{ employee.date_of_birth }}</p>
+
+            <label><strong>Education Qualifications:</strong></label>
+            <p>{{ employee.education_qualifications }}</p>
+
+            <label><strong>CV:</strong></label>
+            {% if employee.cv %}
+                <p><a href="{{ employee.cv.url }}">Download CV</a></p>
+            {% else %}
+                <p>No CV uploaded</p>
+            {% endif %}
+
+            {% if employee.is_Fresher %}
+                <label><strong>Fresher Specific Details:</strong></label>
+                <p><strong>College Name:</strong> {{ employee.college_name }}</p>
+                <p><strong>University:</strong> {{ employee.university }}</p>
+                <p><strong>Pass Out Year:</strong> {{ employee.pass_out_year }}</p>
+            {% elif employee.is_Experienced %}
+                <label><strong>Experienced Specific Details:</strong></label>
+                <p><strong>Company Name:</strong> {{ employee.company_name }}</p>
+                <p><strong>Years of Experience:</strong> {{ employee.years_of_experience }}</p>
+                <p><strong>Designation:</strong> {{ employee.designation }}</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'admin_dashboard' %}" class="back-link">Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="template-color" content="#0E0E0E">
+    <link rel="manifest" href="manifest.json" crossorigin="">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="description" content="Index page">
+    <meta name="keywords" content="index, page">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.svg">
+    <title>Post Job</title>
+    <link href="{% static 'assets/css5/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="box-content">
+        <div class="box-heading">
+            <div class="box-title"> 
+                <h3 class="mb-35">Post a Job</h3>
+            </div>
+            <div class="box-breadcrumb"> 
+                <div class="breadcrumbs">
+                    <ul> 
+                        <li><span>Post New Job</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row"> 
+            <div class="col-lg-12">
+                <div class="section-box">
+                    <div class="container"> 
+                        <div class="panel-white mb-30">
+                            <div class="box-padding bg-postjob">
+                                <form method="POST" action="{% url 'add_job' %}">
+                                    {% csrf_token %}
+                                    <div class="row mt-30">
+                                        <div class="col-lg-9">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job title</label>
+                                                        <input class="form-control" type="text" name="title" placeholder="e.g. Senior Product Designer">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Posted date</label>
+                                                        <input class="form-control" type="date" name="posted_date" placeholder="dd/mm/yyyy" style="color: #3d3b3b;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job type</label>
+                                                        <select class="form-control" name="job_type">
+                                                            <option value="Full-time">Full-time</option>
+                                                            <option value="Part-time">Part-time</option>
+                                                            <option value="Contract">Contract</option>
+                                                            <option value="Internship">Internship</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job description</label>
+                                                        <textarea class="form-control" name="description" rows="8"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job Location</label>
+                                                        <select class="form-control" name="location">
+                                                            <option value="">Select a location</option>
+                                                            <option value="Mumbai">Mumbai</option>
+                                                            <option value="Bengaluru">Bengaluru</option>
+                                                            <option value="Delhi">Delhi</option>
+                                                            <option value="Kerala">Kerala</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Workplace type</label>
+                                                        <select class="form-control" name="workplace_type">
+                                                            <option value="Remote">Remote</option>
+                                                            <option value="Office">Office</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Salary</label>
+                                                        <input class="form-control" type="text" name="salary" placeholder="$2200 - $2500">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-30">
+                                                        <label class="font-sm color-text-muted mb-10">Job Category</label>
+                                                        <select class="form-control" name="job_category">
+                                                            <option value="Automotive Jobs">Automotive Jobs</option>
+                                                            <option value="HealthCare">HealthCare</option>
+                                                            <option value="Customer-Service">Customer-Service</option>
+                                                            <option value="Project-Management">Project-Management</option>
+                                                            <option value="Development">Development</option>
+                                                            <option value="Design">Design</option>
+                                                            <option value="Marketing">Marketing</option>
+                                                            <option value="Accounting-Finance">Accounting-Finance</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mt-10">
+                                                        <button class="btn btn-default" type="submit">Post New Job</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'assets/js2/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery-migrate-3.3.0.min.js' %}"></script>
+    <script src="{% static 'assets/js2/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js2/waypoints.js' %}"></script>
+    <script src="{% static 'assets/js2/magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js2/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/js2/select2.min.js' %}"></script>
+    <script src="{% static 'assets/js2/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js2/jquery.circliful.js' %}"></script>
+    <script src="{% static 'assets/js2/main.js' %}"></script>
+    
+    
+</body>
+</html>

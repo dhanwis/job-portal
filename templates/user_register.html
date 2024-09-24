@@ -1,0 +1,187 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Registration</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/assets/css2/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .user-fields {
+            display: none;
+        }
+    
+        .text-danger {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section"></h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                        <div class="text w-100">
+                            <h2 style="color: #ffffff">Welcome to User Registration</h2>
+                            <p style="color: #ffffff">Already have an account?</p>
+                            <a href="../login_user/" class="btn btn-white btn-outline-white" style="background-color: #fff;color: #1245a8;"><i class="fa fa-sign-in" style="font-size:20px"></i> Login</a>
+                        </div>
+                    </div>
+                    <div class="login-wrap p-4 p-lg-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">User Registration</h3>
+
+                               
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="name" class="form-label label-required">Full Name: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="email" class="form-label label-required">Email: <span class="text-danger">*</span></label><br>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="phone_number" class="form-label label-required">Phone: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="phone_number" name="phone_number" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label label-required">Gender: <span class="text-danger">*</span></label><br>
+                                        <div>
+                                            <input type="radio" id="male" name="gender" value="Male" required>
+                                            <label for="male">Male</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="female" name="gender" value="Female" required>
+                                            <label for="female">Female</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="date_of_birth" class="form-label label-required">Date of Birth: <span class="text-danger">*</span></label><br>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="password" class="form-label label-required">Password: <span class="text-danger">*</span></label><br>
+                                        <input type="password" id="password" name="password" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="education_qualifications" class="form-label label-required">Education Qualifications: <span class="text-danger">*</span></label><br>
+                                        <select id="education_qualifications" name="education_qualifications" class="form-control" required>
+                                            <option value="" disabled selected>Select Qualifications</option>
+                                            <option value="10th">10th</option>
+                                            <option value="12th">12th</option>
+                                            <option value="Degree">Degree</option>
+                                            <option value="Post Graduation">Post Graduation</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="user_type" class="form-label label-required">User Type: <span class="text-danger">*</span></label><br>
+                                        <select id="user_type" name="user_type" class="form-control"  required>
+                                            <option value="" disabled selected>Select Type</option>
+                                            <option value="fresher">Fresher</option>
+                                            <option value="experienced">Experienced</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Fresher specific fields -->
+                                    <div id="fresher_fields" class="user-fields form-group mb-3" style="display: none;">
+                                        <label for="college_name" class="form-label label-required">College Name: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="college_name" name="college_name" class="form-control"><br>
+                                        
+                                        <label for="university" class="form-label label-required">University: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="university" name="university" class="form-control"><br>
+                                        
+                                        <label for="pass_out_year" class="form-label label-required">Year of Passing: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="pass_out_year" name="pass_out_year" class="form-control"><br>
+                                    </div>
+                                    
+                                    <!-- Experienced specific fields -->
+                                    <div id="experienced_fields" class="user-fields form-group mb-3" style="display: none;">
+                                        <label for="company_name" class="form-label label-required">Company Name: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="company_name" name="company_name" class="form-control"><br>
+                                        
+                                        <label for="years_of_experience" class="form-label label-required">Years of Experience: <span class="text-danger">*</span></label><br>
+                                        <input type="number" id="years_of_experience" name="years_of_experience" class="form-control"><br>
+                                        
+                                        <label for="designation" class="form-label label-required">Designation: <span class="text-danger">*</span></label><br>
+                                        <input type="text" id="designation" name="designation" class="form-control"><br>
+                                    </div>
+                                    
+                                    <!-- Submit Button -->
+                                    <div id="submit_button" class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                    </div>
+                                </form>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var user_type = document.getElementById('user_type');
+        var fresher_fields = document.getElementById('fresher_fields');
+        var experienced_fields = document.getElementById('experienced_fields');
+        var submit_button = document.getElementById('submit_button');
+        
+        // Initially hide specific fields and submit button
+        fresher_fields.style.display = 'none';
+        experienced_fields.style.display = 'none';
+        
+        // Show fields based on user type selection
+        user_type.addEventListener('change', function () {
+            if (user_type.value === 'fresher') {
+                fresher_fields.style.display = 'block';
+                experienced_fields.style.display = 'none';
+                submit_button.style.display = 'block'; // Show submit button for fresher
+            } else if (user_type.value === 'experienced') {
+                fresher_fields.style.display = 'none';
+                experienced_fields.style.display = 'block';
+                submit_button.style.display = 'block'; // Show submit button for experienced
+            } else {
+                fresher_fields.style.display = 'none';
+                experienced_fields.style.display = 'none';
+                submit_button.style.display = 'none'; // Hide submit button if no type selected
+            }
+        });
+    });
+</script>
+</body>
+</html>

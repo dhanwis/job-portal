@@ -1,0 +1,234 @@
+{% extends "headerfooter.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Page Content -->
+
+
+    <section class="banner-section-three">
+      <div class="auto-container">
+        <div class="row">
+          <div class="content-column col-lg-7 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <div class="title-box wow fadeInUp">
+                <h3>Join us &amp; Explore Thousands <br> of Jobs</h3>
+                <div class="text">Find Jobs, Employment &amp; Career Opportunities</div>
+              </div>
+
+              <!-- Job Search Form -->
+              <div class="job-search-form-two wow fadeInUp" data-wow-delay="500ms">
+                <form method="get" action="{% url 'job_search' %}">
+                  <div class="row">
+                    <div class="form-group col-lg-5 col-md-12 col-sm-12">
+                      <label class="title">What</label>
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input type="text" name="q" placeholder="Job title, keywords, or company" value="{{ request.GET.q }}">
+                    </div>
+                    <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
+                      <label class="title">Where</label>
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      <input type="text" name="location" placeholder="City or postcode" value="{{ request.GET.location }}">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-12 col-sm-12 btn-box">
+                      <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Find Jobs</span></button>
+                    </div>
+                  </div>
+                </form>
+                
+              </div>
+              <!-- Job Search Form -->
+
+              <!-- Popular Search -->
+              <div class="popular-searches wow fadeInUp" data-wow-delay="1000ms">
+                <span class="title">Popular Searches : </span>
+                <a href="#">Designer</a>,
+                <a href="#">Developer</a>,
+                <a href="#">Web</a>,
+                <a href="#">IOS</a>,
+                <a href="#">PHP</a>,
+                <a href="#">Senior</a>,
+                <a href="#">Engineer</a>,
+              </div>
+              <!-- End Popular Search -->
+            </div>
+          </div>
+
+          <div class="image-column col-lg-5 col-md-12">
+            <div class="image-box">
+              <figure class="main-image wow fadeInRight" data-wow-delay="1500ms"><img src="{% static 'assets/images/banner-img-3.png'%}" alt=""></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Categories -->
+    <section class="job-categories">
+      <div class="auto-container">
+        <div class="sec-title text-center">
+          <h2>Popular Job Categories</h2>
+          <div class="text"></div>
+        </div>
+
+        <div class="row wow fadeInUp">
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-money-1"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Accounting-Finance' %}">Accounting-Finance</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-promotion"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Marketing' %}">Marketing Jobs</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-vector"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Design' %}">Design</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-web-programming"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Development' %}">Development</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-rocket-ship"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Project-Management' %}">Project Management</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-support-1"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Customer-Service' %}">Customer-Service</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-first-aid-kit-1"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'HealthCare' %}">HealthCare</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Block -->
+          <div class="category-block-two col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="content">
+                <!-- <span class="icon flaticon-car"></span> -->
+                <h4><a href="{% url 'jobs_by_category' 'Automotive-Jobs' %}">Automotive Jobs</a></h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Job Categories -->
+
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="static/assets/images/111.jpg"  width="1100" height="500">
+      <div class="carousel-caption">
+       
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="static/assets/images/1000_F_1.jpg" width="1100" height="500">
+      <div class="carousel-caption">
+       
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="static/assets/images/1000_F.jpg"  width="1100" height="500">
+      <div class="carousel-caption">
+       
+      </div>   
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon" style="background-color: black;"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon" style="background-color: black;"></span>
+  </a>
+</div>
+
+    <div class="best-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+             
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h1>About Us</h1>
+              <br>
+              <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
+              <ul class="featured-list">
+                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                <li><a href="#">Consectetur an adipisicing elit</a></li>
+                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
+                <li><a href="#">Corporis, omnis doloremque</a></li>
+              </ul>
+              <!-- <a href="" class="filled-button">Read More</a> -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="static/assets/images/demo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  {%endblock%}
+   

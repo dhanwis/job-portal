@@ -1,0 +1,218 @@
+{% extends "headerfooter.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Page Content -->
+<div class="page-heading about-heading header-text" style="background-image: url('{% static 'assets/images/job png.png' %}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h2>Companies</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="contact-form">
+          <form action="{% url 'companies' %}" method="GET">
+            <h5 style="margin-bottom: 15px">Company Type</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="company_type" value="Corporate" {% if 'Corporate' in company_type_filter %}checked{% endif %}>
+                  <small>Corporate</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="company_type" value="Foreign MNC" {% if 'Foreign MNC' in company_type_filter %}checked{% endif %}>
+                  <small>Foreign MNC</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="company_type" value="Indian MNC" {% if 'Indian MNC' in company_type_filter %}checked{% endif %}>
+                  <small>Indian MNC</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="company_type" value="Startup" {% if 'Startup' in company_type_filter %}checked{% endif %}>
+                  <small>Startup</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="company_type" value="Others" {% if 'Others' in company_type_filter %}checked{% endif %}>
+                  <small>Others</small>
+                </label>
+              </div>
+            </div>
+            <br>
+            <h5 style="margin-bottom: 15px">Location</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="location" value="Delhi" {% if 'Delhi' in location_filter %}checked{% endif %}>
+                  <small>Delhi</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="location" value="Bengaluru" {% if 'Bengaluru' in location_filter %}checked{% endif %}>
+                  <small>Bengaluru</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="location" value="Mumbai" {% if 'Mumbai' in location_filter %}checked{% endif %}>
+                  <small>Mumbai</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="location" value="Kerala" {% if 'Kerala' in location_filter %}checked{% endif %}>
+                  <small>Kerala</small>
+                </label>
+              </div>
+            </div>
+            <br>
+            <h5 style="margin-bottom: 15px">Industry</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="IT Services & Consulting" {% if 'IT Services & Consulting' in industry_filter %}checked{% endif %}>
+                  <small>IT Services & Consulting</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Software Production" {% if 'Software Production' in industry_filter %}checked{% endif %}>
+                  <small>Software Production</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Medical Services/Hospital" {% if 'Medical Services/Hospital' in industry_filter %}checked{% endif %}>
+                  <small>Medical Services/Hospital</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="IT & Services" {% if 'IT & Services' in industry_filter %}checked{% endif %}>
+                  <small>IT & Services</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Trading" {% if 'Trading' in industry_filter %}checked{% endif %}>
+                  <small>Trading</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Food production" {% if 'Food production' in industry_filter %}checked{% endif %}>
+                  <small>Food production</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Airlines" {% if 'Airlines' in industry_filter %}checked{% endif %}>
+                  <small>Airlines</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Entertainment" {% if 'Entertainment' in industry_filter %}checked{% endif %}>
+                  <small>Entertainment</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Engineering & Construction" {% if 'Engineering & Construction' in industry_filter %}checked{% endif %}>
+                  <small>Engineering & Construction</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="industry" value="Other" {% if 'Other' in industry_filter %}checked{% endif %}>
+                  <small>Other</small>
+                </label>
+              </div>
+            </div>
+            
+            <br>
+            
+            <br>
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          {% for company in companies %}
+            <div class="col-md-6">
+              <div class="company-box border rounded p-3">
+                <div class="company-logo mb-3">
+                  <img src="{% static 'assets/images/job png.png' %}" alt="Company Logo" class="img-fluid logo-image">
+                </div>
+                <div class="company-info">
+                  <div class="company-name">{{ company.user.username }}</div>
+                  <div class="company-industry">{{ company.industry }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Pagination at the very bottom -->
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if companies.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="{% url 'companies' %}?page=1{% if location_filter %}&location={{ location_filter }}{% endif %}{% if industry_filter %}&industry={{ industry_filter }}{% endif %}{% if company_type_filter %}&company_type={{ company_type_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}" tabindex="-1">First</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="{% url 'companies' %}?page={{ companies.previous_page_number }}{% if location_filter %}&location={{ location_filter }}{% endif %}{% if industry_filter %}&industry={{ industry_filter }}{% endif %}{% if company_type_filter %}&company_type={{ company_type_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}" tabindex="-1">Previous</a>
+              </li>
+            {% endif %}
+            {% for page_num in companies.paginator.page_range %}
+              {% if companies.number == page_num %}
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">
+                    {{ page_num }}
+                    <span class="sr-only">(current)</span>
+                  </span>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="{% url 'companies' %}?page={{ page_num }}{% if location_filter %}&location={{ location_filter }}{% endif %}{% if industry_filter %}&industry={{ industry_filter }}{% endif %}{% if company_type_filter %}&company_type={{ company_type_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}">{{ page_num }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {% if companies.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="{% url 'companies' %}?page={{ companies.next_page_number }}{% if location_filter %}&location={{ location_filter }}{% endif %}{% if industry_filter %}&industry={{ industry_filter }}{% endif %}{% if company_type_filter %}&company_type={{ company_type_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}">Next</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="{% url 'companies' %}?page={{ companies.paginator.num_pages }}{% if location_filter %}&location={{ location_filter }}{% endif %}{% if industry_filter %}&industry={{ industry_filter }}{% endif %}{% if company_type_filter %}&company_type={{ company_type_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}">Last</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+{% endblock %}

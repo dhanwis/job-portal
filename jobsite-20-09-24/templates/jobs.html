@@ -1,0 +1,191 @@
+{% extends "headerfooter.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Page Content -->
+<div class="page-heading about-heading header-text" style="background-image: url('{% static 'assets/images/job png.png' %}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h2>Jobs</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="contact-form">
+          <form action="{% url 'jobs' %}" method="get">
+            <h5 style="margin-bottom: 15px">Type</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="job_type" value="Contract" {% if 'Contract' in request.GET.job_type %}checked{% endif %}>
+                  <small>Contract</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_type" value="Full-time" {% if 'Full-time' in request.GET.job_type %}checked{% endif %}>
+                  <small>Full time</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_type" value="Internship" {% if 'Internship' in request.GET.job_type %}checked{% endif %}>
+                  <small>Internship</small>
+                </label>
+              </div>
+            </div>
+            <br>
+            <h5 style="margin-bottom: 15px">Category</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Accounting-Finance" {% if 'Accounting-Finance' in request.GET.job_category %}checked{% endif %}>
+                  <small>Accounting / Finance</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Marketing" {% if 'Marketing' in request.GET.job_category %}checked{% endif %}>
+                  <small>Marketing</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Design" {% if 'Design' in request.GET.job_category %}checked{% endif %}>
+                  <small>Design</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Development" {% if 'Development' in request.GET.job_category %}checked{% endif %}>
+                  <small>Development</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Project-Management" {% if 'Project-Management' in request.GET.job_category %}checked{% endif %}>
+                  <small>Project Management</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Customer-Service" {% if 'Customer-Service' in request.GET.job_category %}checked{% endif %}>
+                  <small>Customer Service</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="HealthCare" {% if 'HealthCare' in request.GET.job_category %}checked{% endif %}>
+                  <small>Health and Care</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="job_category" value="Automotive-Jobs" {% if 'Automotive-Jobs' in request.GET.job_category %}checked{% endif %}>
+                  <small>Automotive Jobs</small>
+                </label>
+              </div>
+            </div>
+            <br>
+            {% comment %} <h5 style="margin-bottom: 15px">Career levels</h5>
+            <div style="height: 150px; overflow: auto">
+              <div>
+                <label>
+                  <input type="checkbox" name="career_level" value="Fresher" {% if 'Fresher' in request.GET.career_level %}checked{% endif %}>
+                  <small>Fresher</small>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="checkbox" name="career_level" value="Experienced" {% if 'Experienced' in request.GET.career_level %}checked{% endif %}>
+                  <small>Experienced</small>
+                </label>
+              </div>
+            </div>
+            <br> {% endcomment %}
+            <div class="text-center mt-3">
+              <button type="submit" class="btn btn-primary">Filter Jobs</button>
+          </div>
+          
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row">
+          {% for job in jobs %}
+          <div class="col-md-6">
+            <div class="product-item">
+              <img src="{% static 'assets/images/demo.jpg' %}" alt="Job Image">
+              <div class="down-content">
+                <h4>{{ job.title }}</h4>
+                <h6>${{ job.salary }}</h6>
+                <h4>
+                  <small><i class="fa fa-briefcase"></i> {{ job.workplace_type }}</small><br>
+                  <strong><i class="fa fa-building"></i> {{ job.company_name }}</strong>
+                </h4>
+                <small>
+                  <strong title="Posted on"><i class="fa fa-calendar"></i> {{ job.posted_date }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <strong title="Type"><i class="fa fa-file"></i> {{ job.job_type }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <strong title="Location"><i class="fa fa-map-marker"></i> {{ job.location }}</strong><p>
+                  <strong title="Category"><i class="fa fa-tag"></i> {{ job.job_category }}</strong>   
+                </small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Pagination at the very bottom -->
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if jobs.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page=1{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}" tabindex="-1">First</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ jobs.previous_page_number }}{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}" tabindex="-1">Previous</a>
+              </li>
+            {% endif %}
+            {% for page_num in jobs.paginator.page_range %}
+              {% if jobs.number == page_num %}
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">
+                    {{ page_num }}
+                    <span class="sr-only">(current)</span>
+                  </span>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_num }}{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}">{{ page_num }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {% if jobs.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ jobs.next_page_number }}{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}">Next</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ jobs.paginator.num_pages }}{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}">Last</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+{% endblock %}

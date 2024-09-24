@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applicant Information</title>
+</head>
+<body>
+    <h1>Applicant Information</h1>
+    <p><strong>Name:</strong> {{ employee.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+    <!-- Include other employee fields as necessary -->
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* styles.css */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.upload-box {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.upload-box h2 {
+    margin-bottom: 20px;
+}
+
+.upload-box .form-group {
+    margin-bottom: 20px;
+}
+
+.upload-box .btn {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .upload-box {
+        padding: 15px;
+    }
+
+    .upload-box h2 {
+        font-size: 1.5rem;
+    }
+}
+
+    </style>
+</head>
+<body style="background-color: #3b77b3;">
+    <div class="container">
+        <div class="upload-box">
+            <h2>Upload Your CV</h2>
+            {% if messages %}
+                <div class="col-md-12">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="cv">Select CV</label>
+                    <input type="file" name="cv" id="cv" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

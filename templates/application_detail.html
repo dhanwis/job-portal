@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Detail</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional: Add custom CSS for further styling -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .btn-primary, .btn-secondary, .btn-info {
+            border: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+        }
+        .btn-primary:hover, .btn-secondary:hover, .btn-info:hover {
+            opacity: 0.8;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .cover-letter {
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .btn-group .btn {
+            margin-bottom: 10px;
+        }
+        @media (max-width: 767px) {
+            .container {
+                margin-top: 10px;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Application Details</h4>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ application.job.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ application.employee.username }}</h6>
+                <p class="card-text"><strong>Applied on:</strong> {{ application.submitted_at }}</p>
+                
+                <h5 class="mt-4">Cover Letter</h5>
+                <div class="cover-letter">
+                    {{ application.cover_letter|linebreaksbr }}
+                </div>
+                
+                <h5 class="mt-4">CV</h5>
+                <a href="{{ application.cv.url }}" class="btn btn-primary" target="_blank">View CV</a>
+                
+                <div class="btn-group mt-3">
+                    <a href="{% url 'view_applications' %}" class="btn btn-secondary">Back to Applications</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

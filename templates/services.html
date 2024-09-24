@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <link rel="stylesheet" href="{% static 'assets/services css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="services-container">
+        <h1>Our Services</h1>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">
+                    <img src="{% static 'assets/images/job.png' %}" alt="Service 1" class="service-image">
+
+                </div>
+                <h2>Job Search</h2>
+                <p>Find your dream job with our advanced job search tools.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">
+                    <img src="{% static 'assets/images/c.png' %}" alt="Service 2" class="service-image">
+                </div>
+                <h2>Career Advice</h2>
+                <p>Get expert advice to help you grow your career and land the perfect job.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">
+                    <img src="{% static 'assets/images/resume2.jpg' %}" alt="Service 3" class="service-image">
+                </div>
+                <h2>Resume Building</h2>
+                <p>Use our tools to create a professional resume that stands out.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">
+                    <img src="{% static 'assets/images/interview icon.png' %}" alt="Service 4" class="service-image">
+                </div>
+                <h2>Interview Preparation</h2>
+                <p>Prepare for your interviews with our comprehensive guides and tips.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="column left-column">
+                    <div class="contact-info">
+                        <h2></i> Talk to Us</h2>
+                        <p><i class="fas fa-phone"></i> <strong>Call us Toll Free:</strong> 0000-000-0000</p>
+                        <p>(9:00 AM to 9:00 PM IST)</p>
+                        <p><i class="fas fa-globe"></i> <strong>International Customer Call:</strong> +91-000-0000000</p>
+                        <p><i class="fas fa-users"></i> <strong>For bulk queries call:</strong> 0000-000-0000</p>
+                    </div>
+                </div>
+            <div class="column right-column">
+                <div class="contact-us">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or need further assistance, feel free to reach out to us.</p>
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-icon">
+            <a href="#">
+                <img src="{% static 'assets/images/chatbot.jpg' %}" alt="Chatbot">
+            </a>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
