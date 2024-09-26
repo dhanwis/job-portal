@@ -115,7 +115,7 @@
             <div class="header-left"></div>
             <div class="header-right">
                 {% if user.is_authenticated %}
-                    <a class="btn" href="{% url 'logout_company' %}" style="color: red;">
+                    {% comment %} <a class="btn" href="{% url 'logout_company' %}" style="color: red;"> {% endcomment %}
                         <i class="fas fa-sign-out-alt" style="color: red;"></i> Logout
                     </a>
                     <span style="color: cornflowerblue;">{{ user.username }}</span>
@@ -140,7 +140,7 @@
                 
                 <div class="action-buttons">
                     
-                    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">
+                    <a href="{% url 'dashboard_admin' %}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back to Dashboard
                     </a>
                 </div>
