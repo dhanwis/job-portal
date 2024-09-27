@@ -115,7 +115,7 @@
             <div class="header-left"></div>
             <div class="header-right">
                 {% if user.is_authenticated %}
-                    {% comment %} <a class="btn" href="{% url 'logout_company' %}" style="color: red;"> {% endcomment %}
+                    <a class="btn" href="{% url 'logout_user' %}" style="color: red;">
                         <i class="fas fa-sign-out-alt" style="color: red;"></i> Logout
                     </a>
                     <span style="color: cornflowerblue;">{{ user.username }}</span>
