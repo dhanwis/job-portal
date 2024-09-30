@@ -168,7 +168,6 @@ def user_register(request):
 
 
 def mainlogin(request):
-
     return render(request, 'mainlogin.html' ) 
 
 
@@ -177,7 +176,8 @@ def mainlogin(request):
 
 def user_dashboard(request):
     jobs = Job.objects.all() 
-
+    
+    
     return render(request, 'user_dashboard.html',{'jobs': jobs} ) 
 
 
