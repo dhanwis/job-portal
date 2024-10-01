@@ -260,7 +260,9 @@ def logout_user(request):
 
 
 
-
+def logout_superuser(request):
+    logout(request)
+    return redirect('mainlogin') 
 
 
 

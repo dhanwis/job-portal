@@ -181,7 +181,7 @@ def delete_employee(request, id):
     if request.method == 'POST':
         employee.delete()
         messages.success(request, 'Employee deleted successfully.')
-        return redirect('admin_dashboard')
+        return redirect(' dashboard_admin')
     return render(request, 'delete_employee.html', {'employee': employee})
 
 
